@@ -10,4 +10,5 @@ angle_betwing_hands = minutes_hand_angle * hours_hand_step_per_minute
 
 puts "The angle betwing the hours and
 the minutes hands at 3:15 is
-#{(angle_betwing_hands * 360).round(2)} grad or #{(angle_betwing_hands * 2 * 3.14).round(2)} rad"
+#{(angle_betwing_hands * 360).round(2)} grad or 
+#{(angle_betwing_hands * 2 * 3.14).round(2)} rad"
