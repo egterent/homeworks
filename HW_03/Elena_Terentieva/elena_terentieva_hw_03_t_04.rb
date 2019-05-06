@@ -7,7 +7,7 @@ def task_4(str = '')
       sum += c.to_i
     end
     return sum
-  rescue Exception => e
+  rescue StandardError => e
     puts e.message
   end
 end
