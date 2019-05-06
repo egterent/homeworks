@@ -1,10 +1,12 @@
-def task_2(str = "")
+ip_pat = %r{/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/}
+date_pat = %r{/\d{2}\/\w{3}\/\d{4}:\d{2}:\d{2}:\d{2}\s\+\d{4}/}
+addr_pat = %r{/"POST .+"/}
+address_pat = %r{/\/\S+/}
+
+def task_2(str = '')
   begin
-    return "" if str.empty?
-    ip_pat = /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/
-    date_pat = /\d{2}\/\w{3}\/\d{4}:\d{2}:\d{2}:\d{2}\s\+\d{4}/
-    addr_pat = /"POST .+"/
-    address_pat = /\/\S+/
+    return '' if str.empty?
+
     res = []
     str.each_line do |line|
       ip = line.match(ip_pat)
@@ -16,7 +18,7 @@ def task_2(str = "")
       end
     end
     return res
-  rescue
-    puts "Error: The passed argument is not a string!"
+  rescue Exception => e
+    puts e.message
   end
 end

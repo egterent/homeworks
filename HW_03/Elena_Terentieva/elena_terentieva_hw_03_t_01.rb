@@ -1,12 +1,12 @@
-def task_1(str = "")
+def task_1(str = '')
   begin
-    if !str.empty?
+    unless str.empty?
       str.each_line do |line|
         return line if line.downcase.include?('error')
       end
     end
-    return ""
-  rescue
-    puts "Error: The passed argument is not a string!"
+    return ''
+  rescue Exception => e
+    puts e.message
   end
 end
