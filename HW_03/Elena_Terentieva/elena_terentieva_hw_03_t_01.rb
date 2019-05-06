@@ -1,10 +1,10 @@
 def task_1(str = '')
-    unless str.empty?
-      str.each_line do |line|
-        return line if line.downcase.include?('error')
-      end
+  unless str.empty?
+    str.each_line do |line|
+      return line if line.downcase.include?('error')
     end
-    return ''
-  rescue Exception => e
-    puts e.message
+  end
+  ''
+rescue Exception => e
+  puts e.message
 end
