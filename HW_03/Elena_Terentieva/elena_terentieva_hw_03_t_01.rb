@@ -5,6 +5,6 @@ def task_1(str = '')
     end
   end
   ''
-rescue Exception => e
+rescue StandardError => e
   puts e.message
 end

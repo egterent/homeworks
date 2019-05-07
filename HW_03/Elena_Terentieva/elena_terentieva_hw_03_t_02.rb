@@ -3,15 +3,26 @@ def task_2(str = '')
 
   res = []
   str.each_line do |line|
-    if line.match(%r{/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/}) && 
-      line.match(%r{/\d{2}\/\w{3}\/\d{4}:\d{2}:\d{2}:\d{2}\s\+\d{4}/}) && 
-      line.match(%r{/"POST .+"/})
-      
-      address = addr[0].match(%r{/\/\S+/})
-      res << "#{date[0]} FROM: #{ip[0]} TO: #{address[0]}"
+    ip = ip_match(line)
+    date = date_match(line)
+    address = address_match(line)
+    if ip && date && address
+      res << "#{date} FROM: #{ip} TO: #{address[/\/\S+/]}"
     end
   end
   res
 rescue StandardError => e
   puts e.message
+end
+
+def ip_match(str = '')
+  str[/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/]
+end
+
+def date_match(str = '')
+  str[/\d{2}\/\w{3}\/\d{4}:\d{2}:\d{2}:\d{2}\s\+\d{4}/]
+end
+
+def address_match(str = '')
+  str[/"POST .+"/]
 end
