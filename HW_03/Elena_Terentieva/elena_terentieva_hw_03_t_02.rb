@@ -4,7 +4,7 @@ def task_2(str = '')
   res = []
   str.each_line do |line|
     new_str = build_string(line)
-    res << new_str if !new_str.empty?
+    res << new_str unless new_str.empty?
   end
   res
 rescue StandardError => e

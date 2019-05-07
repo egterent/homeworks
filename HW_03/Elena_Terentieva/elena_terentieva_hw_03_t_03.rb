@@ -18,7 +18,7 @@ def calc_delta(arr = [])
   if !arr.nil? && arr.length > 1
     return (time_to_float(arr[1]) - time_to_float(arr[0])) / 1000
   end
-  
+
   0
 end
 
