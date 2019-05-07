@@ -6,7 +6,7 @@ def task_3(str = '')
   actions = []
   str.each_line do |line|
     if line =~ /Calling core with action:/
-      actions << line[/\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d/] 
+      actions << line[/\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d/]
     end
   end
   calc_delta(actions).to_s
@@ -18,6 +18,7 @@ def calc_delta(arr = [])
   if !arr.nil? && arr.length > 1
     return (time_to_float(arr[1]) - time_to_float(arr[0])) / 1000
   end
+  
   0
 end
 

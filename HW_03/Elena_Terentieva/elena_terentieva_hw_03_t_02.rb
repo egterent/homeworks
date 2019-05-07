@@ -4,9 +4,7 @@ def task_2(str = '')
   res = []
   str.each_line do |line|
     new_str = build_string(line)
-    unless new_str.empty?
-      res << new_str
-    end
+    res << new_str if !new_str.empty?
   end
   res
 rescue StandardError => e
@@ -18,7 +16,7 @@ def ip_match(str = '')
 end
 
 def date_match(str = '')
-  str[/\d{2}\/\w{3}\/\d{4}:\d{2}:\d{2}:\d{2}\s\+\d{4}/]
+  str[%r{/\d{2}\/\w{3}\/\d{4}:\d{2}:\d{2}:\d{2}\s\+\d{4}/}]
 end
 
 def address_match(str = '')
@@ -30,7 +28,9 @@ def build_string(str = '')
     ip = ip_match(str)
     date = date_match(str)
     address = address_match(str)
-    return "#{date} FROM: #{ip} TO: #{address[/\/\S+/]}" if ip && date && address
+    if ip && date && address
+      return "#{date} FROM: #{ip} TO: #{address[%r{/\/\S+/}]}"
+    end
   end
   ''
 end
