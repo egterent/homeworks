@@ -3,11 +3,9 @@ def task_2(str = '')
 
   res = []
   str.each_line do |line|
-    ip = ip_match(line)
-    date = date_match(line)
-    address = address_match(line)
-    if ip && date && address
-      res << "#{date} FROM: #{ip} TO: #{address[/\/\S+/]}"
+    new_str = build_string(line)
+    unless new_str.empty?
+      res << new_str
     end
   end
   res
@@ -25,4 +23,14 @@ end
 
 def address_match(str = '')
   str[/"POST .+"/]
+end
+
+def build_string(str = '')
+  unless str.empty?
+    ip = ip_match(str)
+    date = date_match(str)
+    address = address_match(str)
+    return "#{date} FROM: #{ip} TO: #{address[/\/\S+/]}" if ip && date && address
+  end
+  ''
 end
