@@ -11,25 +11,13 @@ rescue StandardError => e
   puts e.message
 end
 
-def ip_match(str = '')
-  str[/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/]
-end
-
-def date_match(str = '')
-  str[/\d{2}\/\w{3}\/\d{4}:\d{2}:\d{2}:\d{2}\s\+\d{4}/]
-end
-
-def address_match(str = '')
-  str[/"POST .+"/]
-end
-
 def build_string(str = '')
   unless str.empty?
-    ip = ip_match(str)
-    date = date_match(str)
-    address = address_match(str)
+    ip = str[/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/]
+    date = str[%r{\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}}]
+    address = str[/"POST .+"/]
     if ip && date && address
-      return "#{date} FROM: #{ip} TO: #{address[/\/\S+/].upcase}"
+      return "#{date} FROM: #{ip} TO: #{address[%r{\/\S+}].upcase}"
     end
   end
   ''
