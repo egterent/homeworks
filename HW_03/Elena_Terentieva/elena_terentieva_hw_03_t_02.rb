@@ -15,7 +15,7 @@ def build_string(str = '')
   unless str.empty?
     ip = str[/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/]
     date = str[%r{\d{2}\/\w{3}\/\d{4}:\d{2}:\d{2}:\d{2}\s\+\d{4}}]
-    address = str[/"POST .+"/]
+    address = str[/"POST .+ HTTP\/\d+\.\d+"/]
     if ip && date && address
       return "#{date} FROM: #{ip} TO: #{address[%r{\/\S+}].upcase}"
     end
