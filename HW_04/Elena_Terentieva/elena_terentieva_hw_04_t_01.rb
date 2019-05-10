@@ -11,8 +11,4 @@ def task_4_1(num = 0)
     (3..num).each { arr << arr[-1] + arr[-2] }
   end
   arr
-rescue StandardError
-  []
 end
-
-puts task_4_1(-1)
