@@ -37,7 +37,7 @@ def configuration_format(in_config = {})
   out_config[:user] = in_config['username'] if in_config.key?('username')
   out_config[:password] = in_config['password'] if in_config.key?('password')
   out_config[:magic_number] = calc_magic_number(in_config['pool'],
-    in_config['timeout'])
+                                                in_config['timeout'])
   out_config
 rescue StandardError
   {}
