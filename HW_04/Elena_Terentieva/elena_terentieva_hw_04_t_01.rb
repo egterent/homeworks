@@ -11,8 +11,5 @@ def task_4_1(num = 0)
   end
   arr
 rescue StandardError => e
-  puts e.message
   [0]
 end
-
-puts task_4_1(3)
