@@ -1,7 +1,7 @@
 # returns num elements of Fibbonacci sequence
 
 def task_4_1(num = 0)
-  return [0] if !num || num < 1
+  return [0] if num == 0
 
   arr = [1]
   if num > 1
@@ -11,5 +11,5 @@ def task_4_1(num = 0)
   end
   arr
 rescue StandardError
-  [0]
+  []
 end
