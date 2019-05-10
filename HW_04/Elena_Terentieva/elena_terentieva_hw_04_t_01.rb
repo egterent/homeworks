@@ -10,6 +10,6 @@ def task_4_1(num = 0)
     (3..num).each { arr << arr[-1] + arr[-2] }
   end
   arr
-rescue StandardError => e
+rescue StandardError
   [0]
 end
